@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-"""0. Basic annotations - add"""
+"""3. Basic annotations - to string"""
 
 
-def add(a: float, b: float) -> float:
-    """return the sum of a and b, both floats, as float."""
-    return (a + b)
+def to_str(n: float) -> str:
+    """Write a type-annotated function to_str that takes a float n as argument
+    and returns the string representation of the float."""
+    return str(n)
