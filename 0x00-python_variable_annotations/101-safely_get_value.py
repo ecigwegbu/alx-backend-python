@@ -3,8 +3,12 @@
 from typing import Union, TypeVar, Any, Mapping
 
 
-def safely_get_value(dct: Mapping, key: Any, default: type[None] = None)\
-        -> Any:
+T = TypeVar('T')
+
+
+def safely_get_value(dct: Mapping, key: Any,
+                     default: Union[T, type[None]] = None)\
+                    -> Union[Any, T]:
 
     """Given the parameters and the return values, add type annotations
     to the function. Hint: look into TypeVar"""
