@@ -22,7 +22,7 @@ async def wait_n(n: int, max_delay: int) -> typing.List[float]:
     i: int = 0
     for i in range(n):
         result.append(await wait_random(max_delay))
-    return result
+    return sorted(result)
 
 
 if __name__ == '__main__':
