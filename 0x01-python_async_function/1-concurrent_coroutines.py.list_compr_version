@@ -18,8 +18,7 @@ async def wait_n(n: int, max_delay: int) -> typing.List[float]:
     of concurrency."""
 
     # spawn wait_random n times:
-    result: list[float] = await asyncio.gather(*[wait_random(max_delay)
-                                                 for _ in range(n)])
+    result: list[float] = [await wait_random(max_delay) for _ in range(n)]
     return sorted(result)
 
 
