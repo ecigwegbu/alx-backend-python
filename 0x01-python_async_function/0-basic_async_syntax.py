@@ -11,9 +11,9 @@ import asyncio
 import random
 
 
-async def wait_random(max_delay: int = 10) -> float:
+async def wait_random(max_delay: int = 10):
     """wait max of max_delay seconds and return the time waited."""
-    wait = random.random() * max_delay
+    wait: float = random.random() * max_delay
     result = await asyncio.sleep(wait)
     return wait
 
