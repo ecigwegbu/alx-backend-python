@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """
+2. Run time for parallel comprehension
 """
 import asyncio
 import time
