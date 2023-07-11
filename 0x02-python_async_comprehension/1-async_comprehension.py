@@ -15,8 +15,4 @@ async def async_comprehension() -> float:
     collect 10 random numbers using an async comprehensing over
     async_generator, then return the 10 random numbers.
     """
-    res = async_generator()
-    print(type(async_generator()))
-    return [await  i for i in res]
-
-
+    return [i async for i in async_generator()]
