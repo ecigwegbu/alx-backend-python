@@ -12,7 +12,6 @@ async def async_generator() -> float:
     The coroutine will loop 10 times, each time asynchronously wait 1 second,
     then yield a random number between 0 and 10. Use the random module."""
 
-    i: int = 0
-    for i in range(10):
+    for _ in range(11):
         await asyncio.sleep(1)
         yield random() * 10.0
