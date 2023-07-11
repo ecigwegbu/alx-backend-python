@@ -4,6 +4,7 @@
 """
 import asyncio
 from random import random
+import typing
 
 
 async def async_generator() -> float:
@@ -13,4 +14,4 @@ async def async_generator() -> float:
 
     for _ in range(10):
         await asyncio.sleep(1)
-        yield random() * 10.0
+        yield float(random() * 10)
