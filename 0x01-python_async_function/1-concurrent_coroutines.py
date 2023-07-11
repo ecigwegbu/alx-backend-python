@@ -21,13 +21,3 @@ async def wait_n(n: int, max_delay: int) -> typing.List[float]:
     result: list[float] = await asyncio.gather(*[wait_random(max_delay)
                                                  for _ in range(n)])
     return sorted(result)
-
-
-if __name__ == '__main__':
-    import sys
-    if len(sys.argv) < 2:
-        pass
-        #  print('Usage: {} <number_of_seconds>'.format(sys.argv[0]))
-        #  exit(98)
-    #  code here
-    pass
