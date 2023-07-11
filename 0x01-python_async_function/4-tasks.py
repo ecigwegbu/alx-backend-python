@@ -12,9 +12,6 @@ async def task_wait_n(n: int, max_delay: int) -> typing.List[float]:
     The code is nearly identical to wait_n except task_wait_random is being
     called."""
 
-    if n == 0:
-        return []
-
     #  spawn task_wait_random n times:
     result: list[float] = await asyncio.gather(*[task_wait_random(max_delay)
                                                  for _ in range(n)])
