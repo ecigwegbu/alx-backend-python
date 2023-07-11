@@ -4,7 +4,7 @@
 """
 import asyncio
 import typing
-task_wait_random = __import__('3-tasks').task_wait_random
+task_wait_random = __import__('0-basic_async_syntax').wait_random
 
 
 async def task_wait_n(n: int, max_delay: int) -> typing.List[float]:
@@ -21,6 +21,7 @@ async def task_wait_n(n: int, max_delay: int) -> typing.List[float]:
     result: list[float] = await asyncio.gather(*[task_wait_random(max_delay)
                                                  for _ in range(n)])
     # return sorted(result)
-    # return result
-    return sorted([0.2261658205652346, 1.1942770588220557, 1.8410422186086628,
-                  2.1457353803430523, 4.002505454641153])
+    return sorted(result)
+    # return sorted([0.2261658205652346, 1.1942770588220557,
+    # 1.8410422186086628,
+    #              2.1457353803430523, 4.002505454641153])
