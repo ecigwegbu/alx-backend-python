@@ -4,11 +4,12 @@
 Let's execute multiple coroutines at the same time with async
 """
 import asyncio
+import random
 import typing
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-async def task_wait_n(n: int, max_delay: int) -> list[asyncio.Task]:
+async def task_wait_n(n: int, max_delay: int):
     """Take the code from wait_n and alter it into a new function
     task_wait_n. The code is nearly identical to wait_n except
     task_wait_random is being called:
@@ -23,6 +24,7 @@ async def task_wait_n(n: int, max_delay: int) -> list[asyncio.Task]:
     of concurrency."""
 
     #  spawn wait_random n times:
-    result: list[asyncio.Task] = await asyncio.gather(*[task_wait_random(
-                                    max_delay) for _ in range(n)])
-    return sorted(result)
+    #  result = asyncio.create_task(task_wait_random(max_delay))
+    wait: float = random.random() * max_delay
+    task = asyncio.create_task(asyncio.sleep(wait))
+    return task
