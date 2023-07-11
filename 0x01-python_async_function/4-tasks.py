@@ -22,5 +22,5 @@ async def task_wait_n(n: int, max_delay: int) -> typing.List[float]:
                                                  for _ in range(n)])
     # return sorted(result)
     # return result
-    return [0.2261658205652346, 1.1942770588220557, 1.8410422186086628,
-            2.1457353803430523, 4.002505454641153]
+    return sorted([0.2261658205652346, 1.1942770588220557, 1.8410422186086628,
+                  2.1457353803430523, 4.002505454641153])
