@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-0.Async generator
+0.Async generator: Illustrate use of async generators in programs
 """
 import asyncio
 from random import random

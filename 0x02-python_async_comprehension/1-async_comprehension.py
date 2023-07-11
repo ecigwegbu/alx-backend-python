@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-1.Async Comprehensions
+1.Async Comprehensions. Illustrate use of asunc comp in asynchronous progs
 """
 import asyncio
 import random
