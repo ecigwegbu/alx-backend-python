@@ -73,11 +73,11 @@ class TestGetJson(unittest.TestCase):
 
     Test that the output of get_json is equal to test_payload."""
     @parameterized.expand([
-        ("Example.com", "http://example.com", {"payload": True}),
-        ("Holberton.io", "http://holberton.io", {"payload": False})
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
     ])
     @patch("requests.get")
-    def test_get_json(self, name, test_url, test_payload, mock_get):
+    def test_get_json(self, test_url: str, test_payload: str, mock_get: Mock):
         """Test get_json with patch, parameterize and mock"""
         mock = Mock()
         mock.json.return_value = test_payload
@@ -106,11 +106,11 @@ class TestMemoize(unittest.TestCase):
         pass
 
         @parameterized.expand([
-            ("FirstCall", 42),
-            ("SecondCall", 42)
+            42,
+            42
         ])
         @patch("self.a_method")
-        def test_a_property(self, name, expected, mock_get):
+        def test_a_property(self, expected: int, mock_get: Mock):
             mock = Mock()
             mock.return_value = expected
             result = self.a_property()
