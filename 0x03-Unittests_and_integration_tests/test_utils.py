@@ -37,7 +37,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ("OneTwo", {"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, name: str, nested_map: Mapping,
-                               path: Sequence, expected: Any):
+                               path: Sequence, expected: Mapping):
         """Test that utils.access_nested_map returns what it is supposed
         to return"""
         self.assertEqual(access_nested_map(nested_map, path), expected)
@@ -49,7 +49,7 @@ class TestAccessNestedMap(unittest.TestCase):
     ])
     def test_access_nested_map_exception(self, name: str,
                                          nested_map: Mapping, path: Sequence,
-                                         expected: Any):
+                                         expected: Mapping):
         """Test that utils.access_nested_map returns what it is supposed
         to return"""
         self.assertRaises(KeyError, msg=expected)
