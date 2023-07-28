@@ -32,11 +32,11 @@ class TestAccessNestedMap(unittest.TestCase):
     given inputs"""
 
     @parameterized.expand([
-        ("One", {"a": 1}, ("a",), 1),
-        ("Two", {"a": {"b": 2}}, ("a",), {"b": 2}),
-        ("OneTwo", {"a": {"b": 2}}, ("a", "b"), 2)
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), {"b": 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, name: str, nested_map: Mapping,
+    def test_access_nested_map(self, nested_map: Mapping,
                                path: Sequence, expected: Mapping):
         """Test that utils.access_nested_map returns what it is supposed
         to return"""
@@ -44,10 +44,10 @@ class TestAccessNestedMap(unittest.TestCase):
 
     @parameterized.expand([
         # ("One", {}, ("a"), 1),
-        ("One", {}, ("a"), "KeyError: 'a'"),
-        ("OneTwo", {"a": 1}, ("a", "b"), "KeyError: 'b'")
+        ({}, ("a"), "KeyError: 'a'"),
+        ({"a": 1}, ("a", "b"), "KeyError: 'b'")
     ])
-    def test_access_nested_map_exception(self, name: str,
+    def test_access_nested_map_exception(self,
                                          nested_map: Mapping, path: Sequence,
                                          expected: Mapping):
         """Test that utils.access_nested_map returns what it is supposed
