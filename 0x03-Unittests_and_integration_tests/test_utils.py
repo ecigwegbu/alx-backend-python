@@ -112,9 +112,9 @@ class TestMemoize(unittest.TestCase):
             42,
             42
         ])
-        @patch("self.a_method")
-        def test_a_property(self, expected: int, mock_get: Mock):
+        @patch("TestClass.a_method")
+        def test_a_property(self, expected: Any, mock_get: Mock):
             mock = Mock()
             mock.return_value = expected
-            result = self.a_property()
+            result = TestClass.a_property(self)
             self.asssertEqual(result, 42)
