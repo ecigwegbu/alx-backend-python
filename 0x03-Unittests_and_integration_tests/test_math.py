@@ -1,0 +1,50 @@
+# test_math.py
+# from nose.tools import assert_equal
+from parameterized import parameterized, parameterized_class
+
+import unittest
+import math
+
+
+@parameterized([
+    (2, 2, 4),
+    (2, 3, 8),
+    (1, 9, 1),
+    (0, 9, 0),
+])
+def test_pow(base, exponent, expected):
+    assert math.pow(base, exponent) == expected
+
+
+class TestMathUnitTest(unittest.TestCase):
+    @parameterized.expand([
+        ("negative", -1.5, -2.0),
+        ("integer", 1, 1.0),
+        ("large fraction", 1.6, 1)
+    ])
+    def test_floor(self, name, input, expected):
+        # assert math.floor(input) == expected
+        print("\nUsing assertEqual...")
+        self.assertEqual(math.floor(input), expected)
+
+
+@parameterized_class(('a', 'b', 'expected_sum', 'expected_product'),
+                     [(1, 2, 3, 2), (5, 5, 10, 25)])
+class TestMathClass(unittest.TestCase):
+    def test_add(self):
+        assert self.a + self.b == self.expected_sum
+
+    def test_multiply(self):
+        assert self.a * self.b == self.expected_product
+
+
+@parameterized_class([
+    {"a": 3, "expected": 2},
+    {"b": 5, "expected": -4}
+])
+class TestMathClassDict(unittest.TestCase):
+    a = 1
+    b = 1
+
+    def test_subtract(self):
+        assert self.a - self.b == self.expected
