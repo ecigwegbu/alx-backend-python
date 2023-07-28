@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""0. Parameterize a unit test"""
+"""Tasks 0-3. Unittests with Parameterize, mock, memoize, patch"""
 from parameterized import parameterized
 import unittest
 from unittest.mock import patch, Mock
-# import requests
-# from functools import wraps
+import requests  # debug
+from functools import wraps  # debug
 from typing import (
     Mapping,
     Sequence,
@@ -12,7 +12,11 @@ from typing import (
     Dict,
     Callable,
 )
-from utils import access_nested_map, get_json, memoize
+from utils import (
+    access_nested_map,
+    get_json,
+    memoize,
+)
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -29,25 +33,26 @@ class TestAccessNestedMap(unittest.TestCase):
     that the method returns what it is supposed to.
 
     Decorate the method with @parameterized.expand to test the function for
-    following inputs:"""
+    given inputs"""
 
     @parameterized.expand([
-        ("One", {"a": 1}, ("a",), 1),
-        ("Two", {"a": {"b": 2}}, ("a",), {"b": 2}),
-        ("OneTwo", {"a": {"b": 2}}, ("a", "b"), 2)
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), {"b": 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, name, nested_map, path, expected):
+    def test_access_nested_map(self, nested_map: Mapping,
+                               path: Sequence, expected: Mapping):
         """Test that utils.access_nested_map returns what it is supposed
         to return"""
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
-        # ("One", {}, ("a"), 1),
-        ("One", {}, ("a"), "KeyError: 'a'"),
-        ("OneTwo", {"a": 1}, ("a", "b"), "KeyError: 'b'")
+        ({}, ("a"), "KeyError: 'a'"),
+        ({"a": 1}, ("a", "b"), "KeyError: 'b'")
     ])
-    def test_access_nested_map_exception(self, name, nested_map,
-                                         path, expected):
+    def test_access_nested_map_exception(self,
+                                         nested_map: Mapping, path: Sequence,
+                                         expected: Mapping):
         """Test that utils.access_nested_map returns what it is supposed
         to return"""
         self.assertRaises(KeyError, msg=expected)
@@ -71,11 +76,11 @@ class TestGetJson(unittest.TestCase):
 
     Test that the output of get_json is equal to test_payload."""
     @parameterized.expand([
-        ("Example.com", "http://example.com", {"payload": True}),
-        ("Holberton.io", "http://holberton.io", {"payload": False})
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
     ])
     @patch("requests.get")
-    def test_get_json(self, name, test_url, test_payload, mock_get):
+    def test_get_json(self, test_url: str, test_payload: str, mock_get: Mock):
         """Test get_json with patch, parameterize and mock"""
         mock = Mock()
         mock.json.return_value = test_payload
@@ -104,11 +109,11 @@ class TestMemoize(unittest.TestCase):
         pass
 
         @parameterized.expand([
-            ("FirstCall", 42),
-            ("SecondCall", 42)
+            42,
+            42
         ])
         @patch("self.a_method")
-        def test_a_property(self, name, expected, mock_get):
+        def test_a_property(self, expected: int, mock_get: Mock):
             mock = Mock()
             mock.return_value = expected
             result = self.a_property()
