@@ -100,11 +100,14 @@ class TestMemoize(unittest.TestCase):
         assert_called_once"""
 
         class TestClass:
+            """A class to demonstrate the use of memoize"""
             def a_method(self):
+                """Will be mocked"""
                 return 42
 
             @memoize
             def a_property(self):
+                """Will be memoized"""
                 return self.a_method()
 
         # Create an instance of TestClass
