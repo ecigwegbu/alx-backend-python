@@ -101,12 +101,12 @@ class TestMemoize(unittest.TestCase):
 
         class TestClass:
             """A class to demonstrate the use of memoize"""
-            def a_method(self):
+            def a_method(self) -> int:
                 """Will be mocked"""
                 return 42
 
             @memoize
-            def a_property(self):
+            def a_property(self) -> int:
                 """Will be memoized"""
                 return self.a_method()
 
