@@ -2,9 +2,12 @@
 """Tasks 0-3. Unittests with Parameterize, mock, memoize, patch"""
 from parameterized import parameterized
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import (
+    Mock,
+    patch,
+)
 import requests  # debug
-from functools import wraps  # debug
+# from functools import wraps  # debug
 from typing import (
     Mapping,
     Sequence,
@@ -111,11 +114,11 @@ class TestMemoize(unittest.TestCase):
                 return self.a_method()
 
         # Create an instance of TestClass
-        testObj = TestClass()
+        testObj: TestClass = TestClass()
 
         # Use @patch to mock 'a_method' method of testObj
-        with patch.object(testObj, 'a_method', return_value=42) as obj:
-            result = testObj.a_property
+        with patch.object(testObj, 'a_method', return_value=22) as obj:
+            result: Any = testObj.a_property
             result = testObj.a_property
             obj.assert_called_once()
-            self.assertEqual(result, 42)
+            self.assertEqual(result, 22)
