@@ -106,15 +106,13 @@ class TestMemoize(unittest.TestCase):
             @memoize
             def a_property(self):
                 return self.a_method()
-        pass
 
-        @parameterized.expand([
-            42,
-            42
-        ])
-        @patch("TestClass.a_method")
-        def test_a_property(self, expected: Any, mock_get: Mock):
-            mock = Mock()
-            mock.return_value = expected
-            result = TestClass.a_property(self)
-            self.asssertEqual(result, 42)
+        # Create an instance of TestClass
+        testObj = TestClass()
+
+        # Use @patch to mock 'a_method' method of testObj
+        with patch.object(testObj, 'a_method', return_value=42) as obj:
+            result = testObj.a_property
+            result = testObj.a_property
+            obj.assert_called_once()
+            self.assertEqual(result, 42)
