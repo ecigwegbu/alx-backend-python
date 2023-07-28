@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""0. Parameterize a unit test"""
+"""Tasks 0-3. Unittests with Parameterize, mock, memoize, patch"""
 from parameterized import parameterized
 import unittest
 from unittest.mock import patch, Mock
-# import requests
-# from functools import wraps
+import requests  # debug
+from functools import wraps  # debug
 from typing import (
     Mapping,
     Sequence,
@@ -12,7 +12,11 @@ from typing import (
     Dict,
     Callable,
 )
-from utils import access_nested_map, get_json, memoize
+from utils import (
+    access_nested_map,
+    get_json,
+    memoize,
+)
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -43,7 +47,6 @@ class TestAccessNestedMap(unittest.TestCase):
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
-        # ("One", {}, ("a"), 1),
         ({}, ("a"), "KeyError: 'a'"),
         ({"a": 1}, ("a", "b"), "KeyError: 'b'")
     ])
