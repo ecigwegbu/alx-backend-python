@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Tasks 4-9. Unittests"""
 from parameterized import parameterized
-# from client import GithubOrgClient
-import client
+from client import GithubOrgClient
 import unittest
 from unittest.mock import (
     Mock,
@@ -63,7 +62,7 @@ class TestGithubOrgClient(unittest.TestCase):
                               'https://api.github.com/orgs/Google/repos'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
                    return_value=test_payload) as mock_org:
-            testObj: client.GithubOrgClient = client.GithubOrgClient("Google")
+            testObj: GithubOrgClient = GithubOrgClient("Google")
             result: Any = testObj._public_repos_url
             mock_org.assert_called_once()
             self.assertEqual(result, test_payload['repos_url'])
