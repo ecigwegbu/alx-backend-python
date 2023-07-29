@@ -1,42 +1,17 @@
 #!/usr/bin/env python3
-"""Tasks 4-9. Unittests"""
-from parameterized import parameterized
+"""Unittest for Client Module"""
+
 from client import GithubOrgClient
 import unittest
-from unittest.mock import (
-    Mock,
-    patch,
-    PropertyMock
-)
-import requests  # debug
-from functools import wraps  # debug
-from typing import (
-    Mapping,
-    Sequence,
-    Any,
-    Dict,
-    Callable,
-)
-from utils import (
-    access_nested_map,
-    get_json,
-    memoize,
-)
+from parameterized import parameterized
+from unittest.mock import Mock, patch, PropertyMock
+
 
 class TestGithubOrgClient(unittest.TestCase):
     """Test that GithubOrgClient.org returns the correct value.
-
-    Use @patch as a decorator to make sure get_json is called once with the
-    expected argument but make sure it is not executed.
-
-    Use @parameterized.expand as a decorator to parametrize the test with a
-    couple of org examples to pass to GithubOrgClient, in this order:
-
-    google
-    abc
     Of course, no external HTTP calls should be made."""
 
-    def test_public_repos_url(self):
+def test_public_repos_url(self):
         """Use patch as a context manager to patch GithubOrgClient.org and make
         it return a known payload.
 
