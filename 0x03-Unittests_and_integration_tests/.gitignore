@@ -1,0 +1,12 @@
+*.tmp
+v0
+v1
+*.v*
+nod_modules
+.*.swp
+*.bak
+*.25pc
+tmp*
+temp*
+*.debug
+testparam.py
