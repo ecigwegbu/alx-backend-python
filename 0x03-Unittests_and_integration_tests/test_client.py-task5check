@@ -12,18 +12,12 @@ class TestGithubOrgClient(unittest.TestCase):
     Of course, no external HTTP calls should be made."""
 
     def test_public_repos_url(self):
-        """Use patch as a context manager to patch GithubOrgClient.org and make
-        it return a known payload.
-
-        Test that the result of _public_repos_url is the expected one based on
-        the mocked payload."""
-
-        testObj = GithubOrgClient("google")
-        test_payload = {'repos_url': 'https://example.com'}
+        """Use patch as a context manager to patch GithubOrgClient.org"""
+        resp = {'repos_url': 'https://api.github.com/orgs/google/repos'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
-                   return_value=test_payload) as mock2:
-            result: Any = testObj._public_repos_url
-            self.assertEqual(result, test_payload['repos_url'])
+                   return_value=resp):
+            self.assertEqual(GithubOrgClient('Google')._public_repos_url,
+                             resp['repos_url'])
 
 
 if __name__ == '__main__':
