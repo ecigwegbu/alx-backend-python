@@ -24,4 +24,3 @@ class TestGithubOrgClient(unittest.TestCase):
                    return_value=test_payload) as mock2:
             result: Any = testObj._public_repos_url
             self.assertEqual(result, test_payload['repos_url'])
-
