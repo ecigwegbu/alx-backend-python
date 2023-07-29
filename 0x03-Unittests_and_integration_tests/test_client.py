@@ -12,6 +12,8 @@ class TestGithubOrgClient(unittest.TestCase):
     Use patch as a decorator to make sure get_json is called once with the
     expected argument but make sure it is not executed.
     Use parameterized.expand as a decorator to parametrize the test with a
+    expected argument but make sure it is not executed.
+    Use parameterized.expand as a decorator to parametrize the test with a
     Of course, no external HTTP calls should be made."""
 
     def test_public_repos_url(self):
