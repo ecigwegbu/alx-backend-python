@@ -54,16 +54,14 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_public_repos_url(self):
         """Use patch as a context manager to patch GithubOrgClient.org and make
         it return a known payload.
-
         Test that the result of _public_repos_url is the expected one based on
         the mocked payload."""
-
-        test_payload = {'repos_url':
+        resp = {'repos_url':
                               'https://api.github.com/orgs/Google/repos'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
-                   return_value=test_payload):
+                   return_value=resp):
             org = GithubOrgClient('Google')
-            self.assertEqual(org._public_repos_url, test_payload['repos_url'])
+            self.assertEqual(org._public_repos_url, resp['repos_url'])
 
 
 if __name__ == '__main__':
