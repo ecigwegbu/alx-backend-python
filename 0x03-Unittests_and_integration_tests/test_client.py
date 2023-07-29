@@ -56,8 +56,7 @@ class TestGithubOrgClient(unittest.TestCase):
         it return a known payload.
         Test that the result of _public_repos_url is the expected one based on
         the mocked payload."""
-        resp = {'repos_url':
-                              'https://api.github.com/orgs/Google/repos'}
+        resp = {'repos_url': 'https://api.github.com/orgs/Google/repos'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
                    return_value=resp):
             org = GithubOrgClient('Google')
