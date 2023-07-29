@@ -10,6 +10,11 @@ from unittest.mock import Mock, patch, PropertyMock
 class TestGithubOrgClient(unittest.TestCase):
     """Test that GithubOrgClient.org returns the correct value.
     Use patch as a decorator to make sure get_json is called once with the
+    Use patch as a decorator to make sure get_json is called once with the
+    expected argument but make sure it is not executed.
+    Use parameterized.expand as a decorator to parametrize the test with a
+    expected argument but make sure it is not executed.
+    Use parameterized.expand as a decorator to parametrize the test with a
     expected argument but make sure it is not executed.
     Use parameterized.expand as a decorator to parametrize the test with a
     expected argument but make sure it is not executed.
