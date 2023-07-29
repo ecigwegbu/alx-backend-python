@@ -3,7 +3,7 @@
 from parameterized import parameterized
 from client import GithubOrgClient
 import unittest
-from unittest.mock import Mock, patch, PropertyMock
+from unittest.mock import patch, PropertyMock
 # import requests  # debug
 # from functools import wraps  # debug
 from typing import Mapping, Sequence, Any, Dict, Callable
