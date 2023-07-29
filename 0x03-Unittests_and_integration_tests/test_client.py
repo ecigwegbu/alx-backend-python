@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tasks 4-9. Unittests for Client Module"""
+"""Unittest for Client Module"""
 
 from client import GithubOrgClient
 import unittest
