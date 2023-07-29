@@ -3,25 +3,11 @@
 from parameterized import parameterized
 from client import GithubOrgClient
 import unittest
-from unittest.mock import (
-    Mock,
-    patch,
-    PropertyMock
-)
+from unittest.mock import Mock, patch, PropertyMock
 import requests  # debug
 from functools import wraps  # debug
-from typing import (
-    Mapping,
-    Sequence,
-    Any,
-    Dict,
-    Callable,
-)
-from utils import (
-    access_nested_map,
-    get_json,
-    memoize,
-)
+from typing import Mapping, Sequence, Any, Dict, Callable
+from utils import access_nested_map, get_json, memoize
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -52,10 +38,7 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, test_payload)
 
     def test_public_repos_url(self):
-        """Use patch as a context manager to patch GithubOrgClient.org and make
-        it return a known payload.
-        Test that the result of _public_repos_url is the expected one based on
-        the mocked payload."""
+        """Use patch as a context manager to patch GithubOrgClient.org"""
         resp = {'repos_url': 'https://api.github.com/orgs/Google/repos'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
                    return_value=resp):
