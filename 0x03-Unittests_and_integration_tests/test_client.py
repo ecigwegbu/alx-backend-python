@@ -23,13 +23,8 @@ from utils import (
     memoize,
 )
 
-
 class TestGithubOrgClient(unittest.TestCase):
     """Test that GithubOrgClient.org returns the correct value.
-    Of course, no external HTTP calls should be made."""
-
-    def test_public_repos_url(self):
-        """Test that GithubOrgClient.org returns the correct value.
 
     Use @patch as a decorator to make sure get_json is called once with the
     expected argument but make sure it is not executed.
@@ -41,6 +36,13 @@ class TestGithubOrgClient(unittest.TestCase):
     abc
     Of course, no external HTTP calls should be made."""
 
+    def test_public_repos_url(self):
+        """Use patch as a context manager to patch GithubOrgClient.org and make
+        it return a known payload.
+
+        Test that the result of _public_repos_url is the expected one based on
+        the mocked payload."""
+
         testObj = GithubOrgClient("google")
         test_payload = {'repos_url': 'https://example.com'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
@@ -48,6 +50,3 @@ class TestGithubOrgClient(unittest.TestCase):
             result: Any = testObj._public_repos_url
             self.assertEqual(result, test_payload['repos_url'])
 
-
-if __name__ == '__main__':
-    unittest.main()
