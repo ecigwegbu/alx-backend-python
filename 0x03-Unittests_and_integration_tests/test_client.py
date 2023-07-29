@@ -47,7 +47,7 @@ class TestGithubOrgClient(unittest.TestCase):
         mock = Mock()
         mock.json.return_value = test_payload
         mock_get.return_value = mock
-        organ = client.GithubOrgClient(org)
+        organ = GithubOrgClient(org)
         result = organ.org
         self.assertEqual(result, test_payload)
 
@@ -65,3 +65,7 @@ class TestGithubOrgClient(unittest.TestCase):
             testObj = GithubOrgClient('Google')
             # result = testObj._public_repos_url
             self.assertEqual(testObj._public_repos_url, test_payload['repos_url'])
+
+
+if __name__ == '__main__':
+    unittest.main()
