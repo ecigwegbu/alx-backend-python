@@ -19,7 +19,7 @@ class TestGithubOrgClient(unittest.TestCase):
     Use parameterized.expand as a decorator to parametrize the test with a
     expected argument but make sure it is not executed.
     Use parameterized.expand as a decorator to parametrize the test with a
-    couple of org examples to pass to GithubOrgClient, in this order
+    couple of org examples to  to GithubOrgClient, in this order
 
     google
     abc
