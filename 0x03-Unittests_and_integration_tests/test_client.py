@@ -13,8 +13,6 @@ class TestGithubOrgClient(unittest.TestCase):
     expected argument but make sure it is not executed.
     Use parameterized.expand as a decorator to parametrize the test with a
     couple of org examples to pass to GithubOrgClient, in this order:
-    google
-    abc
     Of course, no external HTTP calls should be made."""
 
     def test_public_repos_url(self):
