@@ -9,7 +9,16 @@ from unittest.mock import Mock, patch, PropertyMock
 
 class TestGithubOrgClient(unittest.TestCase):
     """Test that GithubOrgClient.org returns the correct value.
-    Of course, no external HTTP calls should be made"""
+
+    Use @patch as a decorator to make sure get_json is called once with the
+    expected argument but make sure it is not executed.
+
+    Use @parameterized.expand as a decorator to parametrize the test with a
+    couple of org examples to pass to GithubOrgClient, in this order:
+
+    google
+    abc
+    Of course, no external HTTP calls should be made."""
 
     def test_public_repos_url(self):
         """Use patch as a context manager to patch GithubOrgClient.org and make
