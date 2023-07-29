@@ -59,9 +59,9 @@ class TestGithubOrgClient(unittest.TestCase):
         Test that the result of _public_repos_url is the expected one based on
         the mocked payload."""
 
-        test_payload = {'repos_url': 'https://example.com'}
+        test_payload: Dict = {'repos_url': 'https://example.com'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
-                   return_value=test_payload) as mock2:
-            testObj = client.GithubOrgClient("google")
+                   return_value=test_payload):
+            testObj: client.GithubOrgClient = client.GithubOrgClient("google")
             result: Any = testObj._public_repos_url
             self.assertEqual(result, test_payload['repos_url'])
