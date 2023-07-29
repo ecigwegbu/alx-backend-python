@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Tasks 4-9. Unittests"""
 from parameterized import parameterized
-from client import GithubOrgClient
+# from client import GithubOrgClient
+import client
 import unittest
 from unittest.mock import (
     Mock,
@@ -47,7 +48,7 @@ class TestGithubOrgClient(unittest.TestCase):
         mock = Mock()
         mock.json.return_value = test_payload
         mock_get.return_value = mock
-        organ = GithubOrgClient(org)
+        organ = client.GithubOrgClient(org)
         result = organ.org
         self.assertEqual(result, test_payload)
 
@@ -58,9 +59,9 @@ class TestGithubOrgClient(unittest.TestCase):
         Test that the result of _public_repos_url is the expected one based on
         the mocked payload."""
 
-        testObj = GithubOrgClient("google")
         test_payload = {'repos_url': 'https://example.com'}
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
                    return_value=test_payload) as mock2:
+            testObj = client.GithubOrgClient("google")
             result: Any = testObj._public_repos_url
             self.assertEqual(result, test_payload['repos_url'])
