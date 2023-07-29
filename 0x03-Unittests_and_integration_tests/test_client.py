@@ -4,10 +4,10 @@ from parameterized import parameterized
 from client import GithubOrgClient
 import unittest
 from unittest.mock import Mock, patch, PropertyMock
-import requests  # debug
-from functools import wraps  # debug
+# import requests  # debug
+# from functools import wraps  # debug
 from typing import Mapping, Sequence, Any, Dict, Callable
-from utils import access_nested_map, get_json, memoize
+# from utils import access_nested_map, get_json, memoize
 
 
 class TestGithubOrgClient(unittest.TestCase):
