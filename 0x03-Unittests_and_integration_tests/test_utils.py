@@ -28,14 +28,14 @@ class TestAccessNestedMap(unittest.TestCase):
     you understand.
 
     In this task you will write the first unit test for
-    utils.access_nested_map.
+    utils access_nested_map.
 
-    Create a TestAccessNestedMap class that inherits from unittest.TestCase.
+    Create a TestAccessNestedMap class that inherits from unittest TestCase.
 
-    Implement the TestAccessNestedMap.test_access_nested_map method to test
+    Implement the TestAccessNestedMap test_access_nested_map method to test
     that the method returns what it is supposed to.
 
-    Decorate the method with @parameterized.expand to test the function for
+    Decorate the method with parameterized expand to test the function for
     given inputs"""
 
     @parameterized.expand([
@@ -66,10 +66,10 @@ class TestGetJson(unittest.TestCase):
     TestGetJson.test_get_json method to test that utils.get_json returns
     the expected result.
 
-    We don’t want to make any actual external HTTP calls.
+    We don't want to make any actual external HTTP calls.
     Use unittest.mock.patch to patch requests.get. Make sure it returns a
     Mock object with a json method that returns test_payload which you
-    parametrize alongside the test_url that you will pass to get_json with
+    parametrize alongside the test_url that you will Pass to get_json with
     the following inputs:
 
     test_url="http://example.com", test_payload={"payload": True}
