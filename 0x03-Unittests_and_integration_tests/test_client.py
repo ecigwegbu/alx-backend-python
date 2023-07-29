@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import (
     Mock,
     patch,
+    PropertyMock
 )
 import requests  # debug
 from functools import wraps  # debug
@@ -49,3 +50,17 @@ class TestGithubOrgClient(unittest.TestCase):
         organ = GithubOrgClient(org)
         result = organ.org
         self.assertEqual(result, test_payload)
+
+    def test_public_repos_url(self):
+        """Use patch as a context manager to patch GithubOrgClient.org and make
+        it return a known payload.
+
+        Test that the result of _public_repos_url is the expected one based on
+        the mocked payload."""
+
+        testObj = GithubOrgClient("google")
+        test_payload = {'repos_url': 'https://example.com'}
+        with patch("client.GithubOrgClient.org", new_callable=PropertyMock,
+                   return_value=test_payload) as mock2:
+            result: Any = testObj._public_repos_url
+            self.assertEqual(result, test_payload['repos_url'])
