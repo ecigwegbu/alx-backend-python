@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch, PropertyMock
 
 class TestGithubOrgClient(unittest.TestCase):
     """Test that GithubOrgClient.org returns the correct value.
-    Of course, no external HTTP calls should be made."""
+    Of course, no external HTTP calls should be made"""
 
 def test_public_repos_url(self):
         """Use patch as a context manager to patch GithubOrgClient.org and make
