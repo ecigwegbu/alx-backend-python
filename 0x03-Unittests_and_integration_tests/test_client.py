@@ -37,6 +37,20 @@ class TestGithubOrgClient(unittest.TestCase):
     abc
     Of course, no external HTTP calls should be made."""
 
+    @parameterized.expand([
+        ("google", {"payload": True}),
+        ("abc", {"payload": False}),
+    ])
+    @patch("requests.get")
+    def test_org(self, org: str, test_payload: dict, mock_get: Mock):
+        """Test that org returns what it is supposed to return"""
+        mock = Mock()
+        mock.json.return_value = test_payload
+        mock_get.return_value = mock
+        organ = GithubOrgClient(org)
+        result = organ.org
+        self.assertEqual(result, test_payload)
+
     def test_public_repos_url(self):
         """Use patch as a context manager to patch GithubOrgClient.org and make
         it return a known payload.

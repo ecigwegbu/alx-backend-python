@@ -1,10 +1,27 @@
 #!/usr/bin/env python3
-"""Unittest for Client Module"""
-
+"""Tasks 4-9. Unittests"""
+from parameterized import parameterized
 from client import GithubOrgClient
 import unittest
-from parameterized import parameterized
-from unittest.mock import Mock, patch, PropertyMock
+from unittest.mock import (
+    Mock,
+    patch,
+    PropertyMock
+)
+import requests  # debug
+from functools import wraps  # debug
+from typing import (
+    Mapping,
+    Sequence,
+    Any,
+    Dict,
+    Callable,
+)
+from utils import (
+    access_nested_map,
+    get_json,
+    memoize,
+)
 
 
 class TestGithubOrgClient(unittest.TestCase):
