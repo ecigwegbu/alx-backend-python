@@ -105,26 +105,5 @@ class TestGithubOrgClient(unittest.TestCase):
                          expected)
 
 
-class TestIntegrationGithubOrgClient(unittest.TestCase):
-    """Test the public_repos method, using setup and teardown"""
-    pass
-
-    def setupClass(self):
-        """Setup Class. This code runs before the class is executed"""
-        pass
-
-    def tearDownClass():
-        """Teardown code executes after the class executes"""
-        pass
-
-    def test_public_repos(self):
-        """This is used to test the method public_repos"""
-        pass
-
-    def test_public_repos_with_license(self):
-        """This is used to test the method with license"""
-        pass
-
-
 if __name__ == '__main__':
     unittest.main()
