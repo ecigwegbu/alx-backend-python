@@ -10,3 +10,14 @@ tmp*
 temp*
 *.debug
 testparam.py
+solution
+works_1945
+__pycache__
+__init__
+calc.py
+mymod.py
+mock-help.py
+test7.py
+test_client_t6.py
+my_module.py
+
