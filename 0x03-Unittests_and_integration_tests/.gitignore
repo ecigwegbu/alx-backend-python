@@ -20,4 +20,5 @@ mock-help.py
 test7.py
 test_client_t6.py
 my_module.py
-
+patch_loc.py
+train
