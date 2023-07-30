@@ -85,7 +85,7 @@ class TestGithubOrgClient(unittest.TestCase):
             # self.assertEqual(public_repos, google_public_repos)
             # mock_get.assert_called_once()
             # mock_repos.assert_called_once()
-            
+
 
 if __name__ == '__main__':
     unittest.main()
