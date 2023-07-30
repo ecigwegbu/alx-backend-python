@@ -22,6 +22,7 @@ from utils import (
     get_json,
     memoize,
 )
+import json
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -64,3 +65,27 @@ class TestGithubOrgClient(unittest.TestCase):
                    return_value=test_payload) as mock2:
             result: Any = testObj._public_repos_url
             self.assertEqual(result, test_payload['repos_url'])
+
+    @patch("utils.get_json")
+    def test_public_repos(self, mock_get: Mock):
+        """Useing @patch as a decorator and context manager"""
+
+        google_public_repos = ['truth', 'ruby-openid-apps-discovery']
+        mock_get.return_value = google_public_repos
+
+        google = GithubOrgClient('Google')
+        google_repos_url = 'https://api.github.com/orgs/google/repos'
+        with patch('client.GithubOrgClient._public_repos_url',
+                   new_callable=PropertyMock,
+                   return_value=google_repos_url) as mock_repos:
+            public_repos = google.public_repos()
+
+            print("\nPublic Repos: _____", public_repos)
+            print("\ngoogle_public_repos: _____", google_public_repos)
+            # self.assertEqual(public_repos, google_public_repos)
+            # mock_get.assert_called_once()
+            # mock_repos.assert_called_once()
+            
+
+if __name__ == '__main__':
+    unittest.main()
